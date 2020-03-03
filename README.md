@@ -33,5 +33,4 @@ Booking API
 ```
 
 ## Feature
-
     Reserve
