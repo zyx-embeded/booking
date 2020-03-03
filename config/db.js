@@ -1,11 +1,8 @@
 const mongoose = require("mongoose");
 
-function setup(url) {
+module.exports.setupDB = function(url) {
   mongoose.connect(url, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   });
-}
-module.exports = {
-  setup
 };

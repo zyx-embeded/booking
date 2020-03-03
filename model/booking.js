@@ -1,20 +1,27 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
-function bookingSchema() {
-  let bookingSchema = new Schema(
-    {
-      userId: { type: String },
-      tableId: { type: String },
-      startTime: { type: Date },
-      endTime: { type: Date }
+const bookingSchema = new mongoose.Schema(
+  {
+    startTime: {
+      type: "Date",
+      required: true
     },
-    {
-      versionKey: false
+    endTime: {
+      type: "Date",
+      required: true
+    },
+    tableId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Table",
+      required: "You must supply table ID"
+    },
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: "You must supply user ID"
     }
-  );
-}
-
-module.exports = {
-  bookingSchema
-};
+  },
+  {
+    versionKey: false
+  }
+);
+module.exports = mongoose.model("Booking", bookingSchema);
